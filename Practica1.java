@@ -56,7 +56,27 @@ public class Practica1 {
 
     //EJERCICIO 3
     public static<T> Collection<Set<T>> divideInSets (Iterator<T> it) {
-        return null;
+        List<T> lista = new ArrayList<>();
+        while (it.hasNext()) {
+            lista.add(it.next());
+        }
+        List<Set<T>> resultado = new ArrayList<>();
+
+        for (T elem : lista) {
+            boolean colocado = false;
+            for (Set<T> conjunto : resultado) {
+                if (!conjunto.contains(elem)) {
+                    colocado = true;
+                    break;
+                }
+            }
+            if (!colocado) {
+                Set<T> nuevo = new HashSet<>();
+                nuevo.add(elem);
+                resultado.add(nuevo);
+            }
+        }
+        return resultado;
     }
 
     //EJERCICIO 4
