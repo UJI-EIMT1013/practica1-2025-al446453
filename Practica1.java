@@ -28,13 +28,34 @@ public class Practica1 {
 
     //EJERCICIO2
     public static void separate (Set<Integer> cuadrados, Set<Integer> noCuadrados)  {
-        //TODO
+        Set<Integer> union = new HashSet<>(cuadrados);
+        union.addAll(noCuadrados);
 
+        Set<Integer> nuevosCuadrados = new HashSet<>();
+        Set<Integer> nuevosNoCuadrados = new HashSet<>();
+
+        for (Integer x : union) {
+            boolean esCuadrado = false;
+            for (Integer y : union) {
+                if (y * y == x) {
+                    esCuadrado = true;
+                    break;
+                }
+            }
+            if (esCuadrado) {
+                nuevosCuadrados.add(x);
+            } else {
+                nuevosNoCuadrados.add(x);
+            }
+        }
+        cuadrados.clear();
+        cuadrados.addAll(nuevosCuadrados);
+        noCuadrados.clear();
+        noCuadrados.addAll(nuevosNoCuadrados);
     }
 
     //EJERCICIO 3
     public static<T> Collection<Set<T>> divideInSets (Iterator<T> it) {
-        //TODO
         return null;
     }
 
